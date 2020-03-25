@@ -1,1 +1,10 @@
-testing 
+flags
+  -u : track remote branch
+  
+Commands:
+  git add . : adds all changes from working directory to staging area and starts tracking.
+  git commit : saves all changes from staging to local repository.
+  git commit -a : directly saves to local repository files from working directory that have been already tracked.
+  git push : saves to remote server all commits stored in local repository
+  git fetch : gets all commits from remote repository to local repository
+  git merge : applys all fetched commits 
