@@ -33,7 +33,7 @@ Merge : the goal is to take commits from a source_branch (e.g. feature) and appl
   git checkout master
   git merge feature
 
-Rebase : the goal is to take commits from a source_branch (e.g. feature) and apply them to a destination_branch (e.g. master)
+Rebase : the goal is to take commits from a source_branch (e.g. feature) and apply them to a destination_branch (e.g. master) 
        : it is different from merge, it will actually take the commit history of the source_branch and will add it on top of 
          destination_branch. Basically it erases history, because of this it is hard to trace any changes added into the code-base
 
