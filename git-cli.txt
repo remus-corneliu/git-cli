@@ -64,11 +64,12 @@ Cherry-pick : Picks a commit and moves it to current branch. It will use the com
 	      Switch to branch to which you want to apply the commit.
 
   git checkout master
-  git cherry-pick commitId feature
-
- 	      if you have conflicts after you finish solving them you need to use the --continue flag
-
-  git cherry-pick --continue 
+  git cherry-pick commitId
+	      
+               Flags :
+		   --continue : continue cherry-pick after merging conflicts are solved
+		   --abord: abord merging conflicts
+		   --no-commite : moves the contents of the cherry-picked commit in the current workdir
 
 Squash : the goal is to merge into one commit multiple commits. You choose the number of commits on which you want to operate on and you
 	 start interactive rebase.
@@ -126,12 +127,12 @@ Stash : saves on a stack your changes
   git stash apply 1 : pops from stack the 2nd item from top.
 
 
-Display information:
+	Display information
   
   git log --online : will display the commitId and commit message
 
 
-Rewinde history 
+	Rewinde history 
 
 Checkout commit : checks out a specific commit from a point in time. Safe: read-only action.
 
