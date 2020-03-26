@@ -43,7 +43,7 @@ Rebase : the goal is to take commits from a source_branch (e.g. feature) and app
 			|
 			*
 			|
-			*
+			* 
   git checkout feature
   git rebase master
 	
@@ -60,6 +60,16 @@ Rebase : the goal is to take commits from a source_branch (e.g. feature) and app
 	3rd you commit changes remotely 
 
  
+Cherry-pick : Picks a commit and moves it to current branch. It will use the commitId to identify which commit(s) you want to move.
+	      Switch to branch to which you want to apply the commit.
+
+  git checkout master
+  git cherry-pick commitId feature
+
+ 	      if you have conflicts after you finish solving them you need to use the --continue flag
+
+  git cherry-pick --continue 
+
 Squash : the goal is to merge into one commit multiple commits. You choose the number of commits on which you want to operate on and you
 	 start interactive rebase.
 	 Hit 'i' to start edit, and choose which commits are going to be squashed by marking them with 'squash'. Leave marked with 'pick'
@@ -67,8 +77,6 @@ Squash : the goal is to merge into one commit multiple commits. You choose the n
          commit back form the HEAD.
 
   git rebase -i HEAD~3
-
-Cherry-pick :
 
 Amend : let's say you are on a branch and you just commited something, you do a little more work and now new changes need to be staged.
         Instead of creating a new commit, and ending up with two commits you can rewrite history using the --amend flag.
@@ -110,4 +118,36 @@ Squashing with fixup : just like Squash but will disregard the commit messages o
   git rebase -i HEAD~3
 	- select 'fixup'
 
-Stash :
+Stash : saves on a stack your changes
+
+  git stash : pushes to stack
+  git stash apply : pops from stack the top.
+  git stash list : lists all stashed items
+  git stash apply 1 : pops from stack the 2nd item from top.
+
+
+Display information:
+  
+  git log --online : will display the commitId and commit message
+
+
+Rewinde history 
+
+Checkout commit : checks out a specific commit from a point in time. Safe: read-only action.
+
+  git checkout commitId : checkout to this commit. It deataches from the <branch> on which you are currently on
+  git checkout <branch> : Reattaches to the HEAD of the branch from which you've left.
+
+Revert commit : reverts the changes of a specific commit. Warning :
+
+  git revert commitId : checkout to this commit. IT deataches from <branch> on which you are currenly on. Enters VIM in which you see what changes 
+			are going to be disregarded and it will create a new commit without those changes.
+
+Reset commit : takes you back in time to a specific commit, discarding all commits after it. Danger : You cannot undo this command.
+
+  git reset HEAD~3 : deletes last 3 commits starting from HEAD back. Retains changes of the commits tha are going to be deleted
+  git reset commitId : deletes all commits starting from HEAD back to the commit specifide with commitId, not including it in the reset operation.
+		       Retains changes of the commits tha are going to be deleted 
+
+	       Flags :
+		 --hard : forces a hard reset, meaning that no changes of the commits being deleted, is going to be retained.
