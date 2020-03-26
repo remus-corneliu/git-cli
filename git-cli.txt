@@ -3,7 +3,7 @@ flags
 
 Stages :
   Stage Area : files are added and begin to be tracked for any changes
-  Commit Area : files are added to local repository
+  Commit Area : files are added to local repository 
 
 Concepts :
   branch : 
