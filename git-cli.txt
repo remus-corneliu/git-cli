@@ -28,7 +28,7 @@ Merge : the goal is to take commits from a source_branch (e.g. feature) and appl
 			| *
 			|/
 			*
-			|
+			| 
 			*
   git checkout master
   git merge feature
