@@ -211,15 +211,17 @@ Checkout commit : checks out a specific commit from a point in time. Safe: read-
 
 Revert commit : reverts the changes of a specific commit.
 
-  git revert commitId : checkout to this commit. IT deataches from <branch> on which you are currenly on. 
+  git revert commitId : checkout to this commit. It Detaches from <branch> on which you are currenly on. 
   						Enters VIM in which you see what changes are going to be disregarded and it will 
 						create a new commit without those changes.
+						
+---------------------------------------------------------------------------------------------------------
 
 Reset commit : takes you back in time to a specific commit, discarding all commits after it. 
 			   You cannot undo this command.
 
-  git reset HEAD~3 : deletes last 3 commits starting from HEAD back. Retains changes of the commits tha 
-  					 are going to be deleted
+  git reset HEAD~no. : deletes last 3 commits starting from HEAD back. Retains changes of the commits 
+  					   that are going to be deleted
   git reset commitId : deletes all commits starting from HEAD back to the commit specifide with commitId,
   					   not including it in the reset operation.
 		       		   Retains changes of the commits tha are going to be deleted 
