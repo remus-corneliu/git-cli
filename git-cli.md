@@ -1,5 +1,5 @@
-**flags
-  -u : track remote branch
+flags
+   -u : track remote branch
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -19,17 +19,17 @@
   git add . 	: adds all changes from working directory to staging area and starts tracking.
   git commit 	: saves all changes from staging to local repository.
   git commit -a : directly saves to local repository files from working directory that have been already 
-  				  tracked.
-  git push 		: saves to remote server all commits stored in local repository
+  		  tracked.
+  git push 	: saves to remote server all commits stored in local repository
   git fetch 	: gets all commits from remote repository to local repository
   git merge 	: applys all fetched commits 
 	
 ---------------------------------------------------------------------------------------------------------
 
 Merge : the goal is to take commits from a source_branch (e.g. feature) and apply them to a 
-		destination_branch (e.g. master)
+	destination_branch (e.g. master)
       : what you will end-up with if you are using merge, is that you will have a messed-up tree, looking 
-	  	weierd with all the branching and merging.
+	weierd with all the branching and merging.
 			*
 			|\
 			* *
@@ -45,10 +45,10 @@ Merge : the goal is to take commits from a source_branch (e.g. feature) and appl
 ---------------------------------------------------------------------------------------------------------
 
 Rebase : the goal is to take commits from a source_branch (e.g. feature) and apply them to a 
-		 destination_branch (e.g. master) 
+	 destination_branch (e.g. master) 
        : it is different from merge, it will actually take the commit history of the source_branch and 
-	   	 will add it on top of destination_branch. Basically it erases history, because of this it is 
-		 hard to trace any changes added into the code-base
+	 will add it on top of destination_branch. Basically it erases history, because of this it is 
+	 hard to trace any changes added into the code-base
 
 			*
    			|
@@ -76,28 +76,29 @@ Rebase : the goal is to take commits from a source_branch (e.g. feature) and app
 ---------------------------------------------------------------------------------------------------------
  
 Cherry-pick : Picks a commit and moves it to current branch. It will use the commitId to identify which
-			  commit(s) you want to move.
-	      	  Switch to branch to which you want to apply the commit.
+	      commit(s) you want to move.
+	      Switch to branch to which you want to apply the commit.
 
   git checkout master
   git cherry-pick commitId
 	      
-               Flags :
-		   --continue : continue cherry-pick after merging conflicts are solved
-		   --abord: abord merging conflicts
-		   --no-commite : moves the contents of the cherry-picked commit in the current workdir
+  	Flags :
+	--continue : continue cherry-pick after merging conflicts are solved
+	--abord: abord merging conflicts
+	--no-commite : moves the contents of the cherry-picked commit in the current workdir
 
 ---------------------------------------------------------------------------------------------------------
 
 Squash : the goal is to merge into one commit multiple commits. You choose the number of commits on which 
-		 you want to operate on and you start interactive rebase.
-		 Hit 'i' to start edit, and choose which commits are going to be squashed by marking them with 
-		 'squash'. 
-		 Leave marked with 'pick'the commit into which the other commits are going to be merged into, 
-		 usually for avoiding conflicts you will 'pick' the last commit back form the HEAD.
+	 you want to operate on and you start interactive rebase.
+	 Hit 'i' to start edit, and choose which commits are going to be squashed by marking them with 
+	 'squash'. 
+	 Leave marked with 'pick'the commit into which the other commits are going to be merged into, 
+	 usually for avoiding conflicts you will 'pick' the last commit back form the HEAD.
 
   git rebase -i HEAD~no.
-    - where no. is the number of commits you want acces over, starting from HEAD back
+  
+        - where no. is the number of commits you want acces over, starting from HEAD back
 	- press 'i' to start editing
 	- mark with 'squash' commit(s) to merge 
  	- 'ESC', ':wq', 'Enter' to save
@@ -105,9 +106,9 @@ Squash : the goal is to merge into one commit multiple commits. You choose the n
 ---------------------------------------------------------------------------------------------------------
 
 Amend : let's say you are on a branch and you just commited something, you do a little more work and now
-		new changes need to be staged.
+	new changes need to be staged.
         Instead of creating a new commit, and ending up with two commits you can rewrite history using 
-		the --amend flag.
+	the --amend flag.
 	--amend operates on the last commit back from HEAD, and it will add to it the new changes.	
         --no-edit flag indicates that you don't want to rename the last commit message.
 	Generates new commit Id
@@ -117,12 +118,13 @@ Amend : let's say you are on a branch and you just commited something, you do a 
 ---------------------------------------------------------------------------------------------------------
 
 Reword : let's say you've named your 2nd commit back from HEAD, wrongfully and you want to change its 
-		 name, you can use interactive rebase to enter the interactive mode and select the 'reword' option 
-		 on the commit which you want to operate. 
-	 	 Generates new commit Id for the commit on which you've operated on.
+	 name, you can use interactive rebase to enter the interactive mode and select the 'reword' option 
+	 on the commit which you want to operate. 
+	 Generates new commit Id for the commit on which you've operated on.
         
   git rebase -i HEAD~no.
-    - where no. is the number of commits you want acces over, starting from HEAD back
+  
+        - where no. is the number of commits you want acces over, starting from HEAD back
 	- press 'i' to start editing
 	- mark with 'reword' commit to rename
  	- 'ESC', ':wq', 'Enter' to save
@@ -131,10 +133,11 @@ Reword : let's say you've named your 2nd commit back from HEAD, wrongfully and y
 ---------------------------------------------------------------------------------------------------------
 
 Remove : let's say you want to delete a commit. Again you will use interactive rebase and choose the 
-		 'drop' to remove the marked commit
+	 'drop' to remove the marked commit
 
   git rebase -i HEAD~no.
     - where no. is the number of commits you want acces over, starting from HEAD back
+    
 	- press 'i' to start editing
 	- mark with 'drop' commit(s) to delete
  	- 'ESC', ':wq', 'Enter' to save
@@ -142,10 +145,10 @@ Remove : let's say you want to delete a commit. Again you will use interactive r
 ---------------------------------------------------------------------------------------------------------
 
 Reorder : let's you reorder commits. Again you will use interactive rebase, this time you don't need to 
-		  choose any option, you simply switch between commits. 
+	  choose any option, you simply switch between commits. 
 
 	- press 'i' to start editing
-    - Ctrl-v : copy line
+        - Ctrl-v : copy line
 	- d : deletes line
 	- 'ESC', ':wq', 'Enter' to save
 
@@ -156,7 +159,8 @@ Squashing with fixup : just like Squash but will disregard the commit messages o
 		       		   Generates new commit Id
 
   git rebase -i HEAD~no.
-    - where no. is the number of commits you want acces over, starting from HEAD back
+  
+        - where no. is the number of commits you want acces over, starting from HEAD back
 	- press 'i' to start editing
 	- mark with 'fixup' commit(s) you want to squash 
  	- 'ESC', ':wq', 'Enter' to save
@@ -166,7 +170,8 @@ Squashing with fixup : just like Squash but will disregard the commit messages o
 Splitting a commit : it splits a commit into multiple commits
 
   git rebase -i HEAD~no.
-    - where no. is the number of commits you want acces over, starting from HEAD back
+  
+   	- where no. is the number of commits you want acces over, starting from HEAD back
 	- press 'i' to start editing
 	- mark with 'edit' commit you want to split
  	- 'ESC', ':wq', 'Enter' to save
@@ -228,4 +233,4 @@ Reset commit : takes you back in time to a specific commit, discarding all commi
 
 	       Flags :
 		 --hard : forces a hard reset, meaning that no changes of the commits being deleted, is going 
-		 	      to be retained.
+		 	  to be retained.
